@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">IssueV2</string>
+    <string name="hello">Hello</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="connect">Connect</string>
+    <string name="welcome">Welcome</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="password_confirmation">Password Confirmation</string>
+    <string name="submit">Submit</string>
+    <string name="incorrect_login">Incorrect login</string>
+    <string name="incorrect_password">Incorrect password</string>
+    <string name="empty_field">Field can not be empty</string>
+    <string name="no_such_user">No user with such login/password</string>
+    <string name="passwords_not_the_same">Passwords must be the same!</string>
+
+    <string-array name="auth_headers">
+        <item>Login</item>
+        <item>Registration</item>
+    </string-array>
 </resources>

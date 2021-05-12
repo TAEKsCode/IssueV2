@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.onix.internship.survay.ui.autorisation.register.RegistrationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/login_layout_padding">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/registerCenterGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/registerBottomGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <TextView
+            android:id="@+id/registerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textSize="48sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registerFirstNameContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/first_name"
+            app:displayError="@{viewModel.errorFirstName}"
+            app:layout_constraintBottom_toTopOf="@+id/registerLoginContainer"
+            app:layout_constraintEnd_toStartOf="@+id/registerCenterGuideline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registerFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nextFocusDown="@id/registerLastName"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:text="@={viewModel.model.firstName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registerLastNameContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="@string/last_name"
+            app:displayError="@{viewModel.errorLastName}"
+            app:layout_constraintBottom_toTopOf="@+id/registerLoginContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/registerCenterGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/registerLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registerLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:text="@={viewModel.model.lastName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registerLoginContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/login"
+            app:displayError="@{viewModel.errorLogin}"
+            app:layout_constraintBottom_toTopOf="@+id/registerPasswordContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerFirstNameContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registerLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:text="@={viewModel.model.login}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registerPasswordContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            app:displayError="@{viewModel.errorPassword}"
+            app:layout_constraintBottom_toTopOf="@+id/registerConfirmPasswordContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerLoginContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registerPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:text="@={viewModel.model.password}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registerConfirmPasswordContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_confirmation"
+            app:layout_constraintBottom_toTopOf="@+id/registerSubmit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerPasswordContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registerConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:text="@={viewModel.model.confirmedPassword}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/registerSubmit"
+            style="@style/authButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onSubmitClick()}"
+            android:text="@string/submit"
+            app:layout_constraintBottom_toBottomOf="@id/registerBottomGuideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerConfirmPasswordContainer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
