@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/authFragment">
 
     <fragment
         android:id="@+id/stubFragment"
         android:name="com.onix.internship.survay.ui.stub.StubFragment"
-        android:label="StubFragment" />
+        android:label="StubFragment"
+        tools:layout="@layout/fragment_stub"/>
     <fragment
         android:id="@+id/authFragment"
         android:name="com.onix.internship.survay.ui.autorisation.AuthFragment"
-        android:label="AuthFragment" />
+        android:label="AuthFragment"
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_authFragment_to_stubFragment"
+            app:destination="@id/stubFragment" />
+    </fragment>
 </navigation>

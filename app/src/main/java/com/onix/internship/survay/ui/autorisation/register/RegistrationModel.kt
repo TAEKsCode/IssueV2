@@ -1,6 +1,8 @@
 package com.onix.internship.survay.ui.autorisation.register
 
-import com.onix.internship.survay.arch.error.ErrorStates
+import com.onix.internship.survay.arch.error.states.ErrorStates
+import com.onix.internship.survay.data.local.tables.user.User
+import com.onix.internship.survay.data.security.md5
 
 data class RegistrationModel(
     var firstName: String = "",
@@ -9,6 +11,13 @@ data class RegistrationModel(
     var password: String = "",
     var confirmedPassword: String = ""
 ) {
+
+    constructor(user: User) : this() {
+        firstName = user.firstName
+        lastName = user.lastName
+        login = user.login
+    }
+
     fun isFirstNameCorrect(): ErrorStates {
         return if (firstName.isNotEmpty()) {
             ErrorStates.NONE
@@ -50,5 +59,14 @@ data class RegistrationModel(
     fun isCorrect(): Boolean {
         return firstName.isNotEmpty() && lastName.isNotEmpty() && login.isNotEmpty()
                 && password.isNotEmpty() && password == confirmedPassword
+    }
+
+    fun toUser(): User {
+        return User(
+            login = login,
+            firstName = firstName,
+            lastName = lastName,
+            password = md5(password)
+        )
     }
 }

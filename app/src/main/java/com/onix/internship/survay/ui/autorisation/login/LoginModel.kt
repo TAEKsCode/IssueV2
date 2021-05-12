@@ -1,6 +1,6 @@
 package com.onix.internship.survay.ui.autorisation.login
 
-import com.onix.internship.survay.arch.error.ErrorStates
+import com.onix.internship.survay.arch.error.states.ErrorStates
 
 data class LoginModel(var login: String = "", var password: String = "") {
 

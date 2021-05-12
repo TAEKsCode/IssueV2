@@ -3,7 +3,7 @@ package com.onix.internship.survay.ui.view.binding
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputLayout
 import com.onix.internship.survay.R
-import com.onix.internship.survay.arch.error.ErrorStates
+import com.onix.internship.survay.arch.error.states.ErrorStates
 
 @BindingAdapter("displayError")
 fun TextInputLayout.displayError(errorStates: ErrorStates) {

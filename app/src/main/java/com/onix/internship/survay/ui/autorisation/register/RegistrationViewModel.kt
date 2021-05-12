@@ -3,11 +3,17 @@ package com.onix.internship.survay.ui.autorisation.register
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.onix.internship.survay.arch.error.ErrorStates
+import com.onix.internship.survay.arch.error.states.ErrorStates
 import com.onix.internship.survay.arch.lifecycle.SingleLiveEvent
+import com.onix.internship.survay.data.local.SurvayDatabase
+import com.onix.internship.survay.data.local.tables.auth.Auth
+import com.onix.internship.survay.ui.autorisation.AuthFragmentDirections
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class RegistrationViewModel : ViewModel() {
+class RegistrationViewModel(private val database: SurvayDatabase) : ViewModel() {
 
     val model = RegistrationModel()
 
@@ -39,6 +45,18 @@ class RegistrationViewModel : ViewModel() {
     }
 
     private fun registerNewUser() {
-
+        viewModelScope.launch(Dispatchers.IO) {
+            model.apply {
+                val user = toUser().apply { role = 0 }
+                val userId = database.userDao.insert(user)
+                database.authDao.insert(
+                    Auth(
+                        authUserId = userId,
+                        timeStamp = System.currentTimeMillis()
+                    )
+                )
+                _navigationEvent.postValue(AuthFragmentDirections.actionAuthFragmentToStubFragment())
+            }
+        }
     }
 }

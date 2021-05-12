@@ -8,11 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.onix.internship.survay.data.local.SurvayDatabase
 import com.onix.internship.survay.databinding.FragmentRegistrationBinding
 
 class RegistrationFragment : Fragment() {
 
-    private val viewModel: RegistrationViewModel by viewModels ()
+    private val viewModel: RegistrationViewModel by viewModels {
+        RegistrationViewModelFactory(
+            SurvayDatabase.getInstance(requireContext())
+        )
+    }
     private lateinit var binding: FragmentRegistrationBinding
 
     override fun onCreateView(

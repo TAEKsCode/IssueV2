@@ -22,7 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tabBackground="@drawable/tab_background"
-            app:tabTextColor="@color/white" />
+            app:tabTextColor="@color/white"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/authViewPager"
