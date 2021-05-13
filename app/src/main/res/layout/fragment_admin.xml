@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.onix.internship.survay.ui.roles.admin.AdminViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/adminContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/adminHeader"
+            layout="@layout/role_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:user="@{viewModel.model.currentUser}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/adminUserList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/adminBack"
+            app:layout_constraintTop_toBottomOf="@id/adminHeader"
+            tools:listitem="@layout/item_user" />
+
+        <Button
+            android:id="@+id/adminBack"
+            style="@style/authButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="@{!viewModel.isDataLoading()}"
+            android:text="@string/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/adminProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="160dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setVisibility="@{viewModel.isDataLoading()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

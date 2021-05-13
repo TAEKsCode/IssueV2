@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.onix.internship.survay.ui.roles.admin.userdetails.UserDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/userDetailsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/login_layout_padding">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/userDetailsCenterGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/userDetailsBottomGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <TextView
+            android:id="@+id/userDetailsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_info"
+            android:textSize="48sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userDetailsFirstNameContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/first_name"
+            app:displayError="@{viewModel.errorFirstName}"
+            app:layout_constraintBottom_toTopOf="@+id/userDetailsLoginContainer"
+            app:layout_constraintEnd_toStartOf="@+id/userDetailsCenterGuideline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userDetailsLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userDetailsFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:nextFocusDown="@id/registerLastName"
+                android:singleLine="true"
+                android:text="@={viewModel.user.firstName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userDetailsLastNameContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="@string/last_name"
+            app:displayError="@{viewModel.errorLastName}"
+            app:layout_constraintBottom_toTopOf="@+id/userDetailsLoginContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/userDetailsCenterGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/userDetailsLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userDetailsLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:text="@={viewModel.user.lastName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userDetailsLoginContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/login"
+            app:displayError="@{viewModel.errorLogin}"
+            app:layout_constraintBottom_toTopOf="@+id/userDetailsPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userDetailsFirstNameContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userDetailsLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:singleLine="true"
+                android:text="@={viewModel.user.login}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/userDetailsPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/change_password"
+            android:onClick="@{() -> viewModel.onChangePasswordClick()}"
+            app:layout_constraintBottom_toTopOf="@+id/userDetailsRole"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userDetailsLoginContainer">
+        </Button>
+
+        <Spinner
+            android:id="@+id/userDetailsRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tooltipText="@string/user_role"
+            app:layout_constraintBottom_toTopOf="@id/userDetailsSubmit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userDetailsPassword" />
+
+        <Button
+            android:id="@+id/userDetailsSubmit"
+            style="@style/authButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onSaveClick()}"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="@id/userDetailsBottomGuideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userDetailsRole" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

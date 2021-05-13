@@ -2,4 +2,6 @@
 <resources>
     <dimen name="login_layout_padding">32dp</dimen>
     <dimen name="auth_button_width">140dp</dimen>
+    <dimen name="role_header_layout_padding">32dp</dimen>
+    <dimen name="change_password_field_horizontal_margin">8dp</dimen>
 </resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.onix.internship.survay.data.local.tables.user.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/roleHeaderContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:padding="@dimen/role_header_layout_padding">
+
+        <TextView
+            android:id="@+id/roleLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.login}"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/roleRole"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sanya123" />
+
+        <TextView
+            android:id="@+id/roleRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/roleLogin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setRole="@{user.roleState}"
+            tools:text="Role" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

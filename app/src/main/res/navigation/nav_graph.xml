@@ -16,7 +16,43 @@
         android:label="AuthFragment"
         tools:layout="@layout/fragment_auth">
         <action
-            android:id="@+id/action_authFragment_to_stubFragment"
-            app:destination="@id/stubFragment" />
+            android:id="@+id/action_authFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.onix.internship.survay.ui.roles.admin.AdminFragment"
+        android:label="AdminFragment"
+        tools:layout="@layout/fragment_admin">
+        <action
+            android:id="@+id/action_adminFragment_to_userDetailsFragment"
+            app:destination="@id/userDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDetailsFragment"
+        android:name="com.onix.internship.survay.ui.roles.admin.userdetails.UserDetailsFragment"
+        android:label="UserDetailsFragment"
+        tools:layout="@layout/fragment_user_details">
+        <argument
+            android:name="user"
+            app:argType="com.onix.internship.survay.data.local.tables.user.User" />
+        <action
+            android:id="@+id/action_userDetailsFragment_to_adminFragment"
+            app:destination="@id/adminFragment"
+            app:popUpTo="@id/adminFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userDetailsFragment_to_changePasswordDialog"
+            app:destination="@id/changePasswordDialog"
+            app:popUpTo="@id/userDetailsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/changePasswordDialog"
+        android:name="com.onix.internship.survay.ui.roles.admin.userdetails.changepassword.ChangePasswordDialog"
+        android:label="ChangePasswordDialog"
+        tools:layout="@layout/dialog_change_password">
+        <argument
+            android:name="user"
+            app:argType="com.onix.internship.survay.data.local.tables.user.User" />
+    </dialog>
 </navigation>

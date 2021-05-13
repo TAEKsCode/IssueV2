@@ -14,6 +14,23 @@
     <string name="empty_field">Field can not be empty</string>
     <string name="no_such_user">No user with such login/password</string>
     <string name="passwords_not_the_same">Passwords must be the same!</string>
+    <string name="back">Back</string>
+    <string name="role">Role: %s</string>
+    <string name="admin">Admin</string>
+    <string name="manager">Manager</string>
+    <string name="user">User</string>
+    <string name="user_role">User role</string>
+    <string name="user_info">User info</string>
+    <string name="save">Save</string>
+    <string name="change_password">Change password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+
+    <string-array name="user_roles">
+        <item>Admin</item>
+        <item>Manager</item>
+        <item>User</item>
+    </string-array>
 
     <string-array name="auth_headers">
         <item>Login</item>

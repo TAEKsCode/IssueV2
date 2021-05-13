@@ -47,7 +47,7 @@ class LoginViewModel(private val database: SurvayDatabase) : ViewModel() {
                             timeStamp = System.currentTimeMillis()
                         )
                     )
-                    _navigationEvent.postValue(AuthFragmentDirections.actionAuthFragmentToStubFragment())
+                    _navigationEvent.postValue(AuthFragmentDirections.actionAuthFragmentToAdminFragment())
                 } else {
                     _errorPassword.postValue(ErrorStates.NO_SUCH_USER)
                 }
